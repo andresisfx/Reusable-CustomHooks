@@ -1,8 +1,8 @@
-import { render } from "@testing-library/react"
-import { ToDoApp } from "../../src/08-useReducer/ToDoApp"
+import { render, screen } from "@testing-library/react"
+import { TodoApp } from "../../src/08-useReducer/TodoApp.jsx"
 import { useTodos } from "../../src/hooks"
 
-
+jest.mock('../../src/hooks/useTodos.js')
 describe('Pruebas en <ToDoApp />', () => {
 
    useTodos.mockReturnValue({
@@ -19,7 +19,7 @@ describe('Pruebas en <ToDoApp />', () => {
     
     test('debe de mostrar el componente sin la informacion', () => {
         
-        render(<ToDoApp />)
+        render(<TodoApp />)
 
         expect(screen.getByText('Todo #1')).toBeTruthy();
         expect(screen.getByText('Todo #2')).toBeTruthy();
